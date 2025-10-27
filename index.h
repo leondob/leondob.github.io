@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Título del documento</title>
+	<style>
+		#canvas { display:block; width:100%; height:auto; /* border removed as requested */ }
+	</style>
+</head>
+<body>
+	<h1>pagina de inicio de León</h1>
+	<p>que hago</p>
+
+	<!-- Integración del contenido de dibujo.html -->
+	<canvas id="canvas" width="512" height="512"></canvas>
+	<script>
+	(function () {
+		const canvas = document.getElementById('canvas');
+		const ctx = canvas.getContext('2d');
+		const ORIG_W = parseInt(canvas.getAttribute('width'), 10) || 512;
+		const ORIG_H = parseInt(canvas.getAttribute('height'), 10) || 512;
+		let markers = [];
+
+		// redimensiona canvas y ajusta transform para que el dibujo (en coordenadas ORIG_W/ORIG_H) se escale correctamente
+		function resizeAndRedraw() {
+			const rect = canvas.getBoundingClientRect();
+			const dpr = window.devicePixelRatio || 1;
+			const cssW = rect.width || canvas.clientWidth || ORIG_W;
+			const cssH = Math.round(cssW * (ORIG_H / ORIG_W)); // mantener aspecto original
+			canvas.style.width = cssW + 'px';
+			canvas.style.height = cssH + 'px';
+			canvas.width = Math.round(cssW * dpr);
+			canvas.height = Math.round(cssH * dpr);
+
+			// escala para dibujo original: dibujamos la obra Inkscape usando coordenadas 0..ORIG_W
+			const scale = cssW / ORIG_W;
+			ctx.setTransform(dpr * scale, 0, 0, dpr * scale, 0, 0);
+
+			// dibuja la obra y los marcadores
+			redrawAll();
+		}
+
+		// función que contiene los trazos exportados (usados tal cual)
+		function renderInkscape() {
+			// #layer1
+			
+			// #path1
+			ctx.beginPath();
+			ctx.fillStyle = 'rgba(255, 42, 42, 0)';
+			ctx.strokeStyle = 'rgb(0, 0, 0)';
+			ctx.lineWidth = 2.500000;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(101.123680, 472.237780);
+			ctx.bezierCurveTo(148.249280, 458.001920, 146.407380, 464.601220, 163.466920, 430.021090);
+			ctx.bezierCurveTo(181.629910, 393.204220, 212.065200, 323.497600, 212.065200, 323.497600);
+			ctx.bezierCurveTo(212.065200, 323.497600, 231.123640, 406.522910, 235.628000, 423.639500);
+			ctx.bezierCurveTo(242.991370, 451.620330, 245.936720, 458.983700, 251.336530, 462.419940);
+			ctx.bezierCurveTo(256.736340, 465.856180, 287.662510, 472.237780, 287.662510, 472.237780);
+			ctx.fill();
+			ctx.stroke();
+			
+			// #path2
+			ctx.beginPath();
+			ctx.fillStyle = 'rgba(255, 42, 42, 0)';
+			ctx.strokeStyle = 'rgb(0, 0, 0)';
+			ctx.lineWidth = 2.500000;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(212.065200, 323.006710);
+			ctx.lineTo(220.410350, 133.031640);
+			ctx.fill();
+			ctx.stroke();
+			
+			// #path3
+			ctx.beginPath();
+			ctx.fillStyle = 'rgb(255, 255, 255)';
+			ctx.strokeStyle = 'rgb(0, 0, 0)';
+			ctx.lineWidth = 2.500000;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(269.963410, 81.386681);
+			ctx.bezierCurveTo(269.963411, 108.894264, 247.671819, 131.197642, 220.164240, 131.212180);
+			ctx.bezierCurveTo(192.656656, 131.226718, 170.341499, 108.946909, 170.312430, 81.439336);
+			ctx.bezierCurveTo(170.283360, 53.931764, 192.551377, 31.604840, 220.058930, 31.561239);
+			ctx.bezierCurveTo(247.566478, 31.517637, 269.905160, 53.773848, 269.963300, 81.281369);
+			ctx.fill();
+			ctx.stroke();
+			
+			// #path4
+			ctx.beginPath();
+			ctx.fillStyle = 'rgba(255, 42, 42, 0)';
+			ctx.strokeStyle = 'rgb(0, 0, 0)';
+			ctx.lineWidth = 2.500000;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(262.136150, 277.844680);
+			ctx.bezierCurveTo(262.136150, 277.844680, 270.481300, 202.738260, 221.392140, 132.049860);
+			ctx.bezierCurveTo(141.376800, 158.558010, 106.032600, 63.815916, 106.032600, 63.815916);
+			ctx.fill();
+			ctx.stroke();
+			
+			// #rect4
+			ctx.beginPath();
+			ctx.fillStyle = 'rgb(255, 255, 255)';
+			ctx.strokeStyle = 'rgb(0, 0, 0)';
+			ctx.lineWidth = 2.500000;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(187.520610, 67.006712);
+			ctx.lineTo(187.520610, 81.242570);
+			ctx.quadraticCurveTo(187.520610, 88.360499, 187.520610, 88.360499);
+			ctx.lineTo(201.756468, 88.360499);
+			ctx.quadraticCurveTo(201.756468, 88.360499, 201.756468, 81.242570);
+			ctx.lineTo(201.756468, 67.006712);
+			ctx.quadraticCurveTo(201.756468, 59.888783, 201.756468, 59.888783);
+			ctx.lineTo(187.520610, 59.888783);
+			ctx.quadraticCurveTo(187.520610, 59.888783, 187.520610, 67.006712);
+			ctx.fill();
+			ctx.stroke();
+			
+			// #rect5
+			ctx.beginPath();
+			ctx.fillStyle = 'rgb(255, 255, 255)';
+			ctx.strokeStyle = 'rgb(0, 0, 0)';
+			ctx.lineWidth = 2.500000;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(222.864810, 67.006712);
+			ctx.lineTo(222.864810, 81.242570);
+			ctx.quadraticCurveTo(222.864810, 88.360499, 222.864810, 88.360499);
+			ctx.lineTo(237.100668, 88.360499);
+			ctx.quadraticCurveTo(237.100668, 88.360499, 237.100668, 81.242570);
+			ctx.lineTo(237.100668, 67.006712);
+			ctx.quadraticCurveTo(237.100668, 59.888783, 237.100668, 59.888783);
+			ctx.lineTo(222.864810, 59.888783);
+			ctx.quadraticCurveTo(222.864810, 59.888783, 222.864810, 67.006712);
+			ctx.fill();
+			ctx.stroke();
+			
+			// #path5
+			ctx.beginPath();
+			ctx.fillStyle = 'rgb(255, 255, 255)';
+			ctx.strokeStyle = 'rgb(0, 0, 0)';
+			ctx.lineWidth = 2.500000;
+			ctx.lineCap = 'round';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(226.471110, 101.853820);
+			ctx.bezierCurveTo(226.471110, 101.853820, 227.080530, 113.539790, 211.387040, 113.539790);
+			ctx.bezierCurveTo(195.693560, 113.539790, 196.183980, 102.260100, 196.183980, 102.260100);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+		}
+
+		// dibuja marcadores (en coordenadas CSS pixels) --> por eso cambiamos transform temporalmente
+		function drawMarkers() {
+			const rect = canvas.getBoundingClientRect();
+			const dpr = window.devicePixelRatio || 1;
+			// establecer transform para dibujar en unidades CSS
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			for (const m of markers) {
+				const xp = (m.x <= 1 ? m.x * 100 : m.x); // acepta fracción o porcentaje
+				const yp = (m.y <= 1 ? m.y * 100 : m.y);
+				const cx = rect.width * xp / 100;
+				const cy = rect.height * yp / 100;
+				const size = (m.size || 6);
+				ctx.beginPath();
+				ctx.fillStyle = m.color || 'red';
+				ctx.strokeStyle = 'black';
+				ctx.lineWidth = 1;
+				ctx.arc(cx, cy, size, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.stroke();
+			}
+		}
+
+		function redrawAll() {
+			// limpiar en espacio original (reset transform primero)
+			ctx.setTransform(1,0,0,1,0,0);
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+			// restaurar transform para dibujo Inkscape (se hace dentro resizeAndRedraw)
+			// dibujar Inkscape
+			renderInkscape();
+			// dibujar marcadores en unidades CSS
+			drawMarkers();
+		}
+
+		// API pública para colocar marcadores por porcentaje (o fracción)
+		window.placeMarkerPercent = function (xPct, yPct, opts) {
+			markers.push({ x: xPct, y: yPct, size: opts && opts.size, color: opts && opts.color });
+			redrawAll();
+		};
+		window.clearMarkers = function () { markers = []; redrawAll(); };
+
+		// inicializar
+		window.addEventListener('resize', resizeAndRedraw);
+		resizeAndRedraw();
+
+		// ejemplo de uso desde código (descomentar para probar)
+		// window.placeMarkerPercent(50, 50, { size: 8, color: 'blue' });
+	})();
+	</script>
+</body>
+</html>
