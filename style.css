@@ -59,7 +59,7 @@
 }
 
 .button-14:focus {
-  border-color: #e77600;
-  box-shadow: rgba(228, 121, 17, .5) 0 0 3px 2px;
+  border-color: #e70000;
+  box-shadow: rgba(228, 17, 17, 0.5) 0 0 3px 2px;
   outline: 0;
 }
