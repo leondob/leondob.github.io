@@ -1,3 +1,38 @@
+.encabezado-telarañas {
+    background-size: cover; /* Asegura que la imagen cubra todo el encabezado */
+    background-position: center; /* Centra la imagen */
+    position: fixed; /* Fija el contenedor */
+    top: -100px; /* Lo coloca en la parte superior */
+    left: -50px; /* Lo alinea a la izquierda */
+    width: 110%; /* Ocupa todo el ancho */
+    z-index: -10; /* Para que esté encima de todo */
+    pointer-events: none;
+}
+
+.encabezado-telarañas img {
+    display: block; /* Importante para evitar espacios extraños */
+    width: 100%; /* Hace que la imagen ocupe el 100% del ancho de su contenedor (.encabezado-telarañas) */
+    height: auto; /* Mantiene la proporción de la imagen al escalar */
+    filter: blur(2px)
+    invert(25%)
+}
+
+body {
+    /* Añade un margen superior para evitar que el contenido se oculte detrás del encabezado fijo */
+    padding-top: 100px; 
+}
+
+@media (prefers-color-scheme: dark) {
+    .encabezado-telarañas img {
+        display: block; /* Importante para evitar espacios extraños */
+        width: 100%; /* Hace que la imagen ocupe el 100% del ancho de su contenedor (.encabezado-telarañas) */
+        height: auto; /* Mantiene la proporción de la imagen al escalar */
+        filter: blur(2px)
+        invert(75%)
+        
+}
+}
+
 .btn_COMENTARIOS {
     display: inline-block;
     background-color: rgba(129, 129, 129, 0.59);
