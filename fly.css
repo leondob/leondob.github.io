@@ -1,41 +1,26 @@
 /* fly.css */
 
-/* Contenedor de la mosca principal (sigue siendo el mismo) */
-#fly-container {
-    position: fixed; 
+/* CSS customizado para el canvas */
+body {
+    margin: 0;
+    overflow: hidden; /* Evitar barras de desplazamiento */
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#flyCanvas {
+    display: block;
+    background-color: transparent; /* Fondo transparente para que la mosca flote sobre la web */
+    position: fixed; /* Flota sobre todo */
     top: 0;
     left: 0;
-    width: 0; 
-    height: 0;
-    pointer-events: none; 
-    z-index: 9999; 
-    opacity: 0; 
-    transition: opacity 1s ease-in-out; 
+    z-index: 9999;
+    pointer-events: none; /* Crucial: permite clicks a través del canvas */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
-
-/* Estilos de la mosca principal (dentro de #fly-container) */
-#fly-image {
-    position: absolute; /* Relative al contenedor */
-    width: 50px; 
-    height: auto;
-    transform-origin: center center; 
-    transition: transform 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out;
-    pointer-events: auto; 
-}
-
-/* NUEVO: Estilos para las moscas adicionales (se añaden directamente al body) */
-.fly-image {
-    position: fixed; /* Fija la posición en la ventana */
-    width: 50px; /* Tamaño de la mosca */
-    height: auto;
-    transform-origin: center center; 
-    transition: transform 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out;
-    pointer-events: auto; 
-    z-index: 9998; /* Un poco por debajo de la principal, pero aún arriba */
-}
-
-
-/* Clase para hacer visible el contenedor principal */
 .visible {
-    opacity: 1 !important;
+    opacity: 1;
 }

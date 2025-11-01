@@ -2,9 +2,10 @@
     background-size: cover; /* Asegura que la imagen cubra todo el encabezado */
     background-position: center; /* Centra la imagen */
     position: fixed; /* Fija el contenedor */
-    top: -100px; /* Lo coloca en la parte superior */
-    left: -50px; /* Lo alinea a la izquierda */
-    width: 110%; /* Ocupa todo el ancho */
+    top: -5vh; /* Lo coloca en la parte superior */
+    left: -5vw; /* Lo alinea a la izquierda */
+    /* width: 110%; */ /* Ocupa todo el ancho */
+    width: 110vw; /* Ocupa todo el ancho de la ventana */
     z-index: -10; /* Para que esté encima de todo */
     pointer-events: none;
 }
