@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>T.D.A</title>
+    <link rel="icon" type="image/png" href="/imagenes/iconos/TDA icono.png">
+</head>
+<BOdy>
+    <br></br>
+	<a href="/index.html">
+		<button class="button-14" role="button" href="/index.html">inicio</button>
+	</a>
+	<a href="/actualizaciones.html">
+		<button class="button-14" role="button" href="/actualizaciones.html">actualizaciones</button>
+	</a>
+	<a href="/festividades/festividades.html">
+		<button class="button-14" role="button" href="/festividades/festividades.html">festividades</button>
+	</a>
+</BOdy>
+<body>
+    <div style="font-size: 8em; font-weight: bold; text-align: center; margin-top: 50px; color: #333;">
+        T.D.A
+    </div>
+    <div style="font-size: 8em; font-weight: bold; text-align: center; margin-top: 5px; color: #333;">
+        | |
+    </div>
+    <div style="font-size: 8em; font-weight: bold; text-align: center; margin-top: 5px; color: #333;">
+        Tiempo Desde la ultima Actializacion 
+    </div>
+
+    <!-- ESTE ES EL ÚNICO ELEMENTO VISIBLE: Muestra solo el número de días -->
+    <div class="contenedor" style="font-size: 5em; font-weight: bold; text-align: center; margin-top: 100px; color: #333;">
+        <span>tiempo pasado desde la ultima vercion:</span>
+        <span id="dayResult">0</span>
+    </div>
+    <style>
+        .contenedor {
+            display: flex; /* Coloca los elementos hijos en una línea */
+            align-items: center; /* Alinea los elementos verticalmente en el centro */
+        }
+        .texto-fijo {
+            margin-right: 10px; /* Espacio entre el texto y la variable */
+        }
+    </style>
+    <script>
+        // **********************************************
+        // 1. DEFINE LA FECHA DE INICIO AQUÍ (Formato: AAAA-MM-DD)
+        // Para cambiar el inicio, edita esta constante.
+        // **********************************************
+        const FECHA_INICIO_FIJA = '2024-01-01'; 
+        // Ejemplo: '2024-01-01'
+
+        // Constantes para elementos del DOM
+        const dayResultDiv = document.getElementById('dayResult');
+
+        /**
+         * Función principal para calcular y mostrar los días transcurridos desde la fecha fija.
+         */
+        function calculateDays() {
+            // Convertir la cadena de fecha fija a un objeto Date
+            const startDate = new Date(FECHA_INICIO_FIJA);
+            const today = new Date();
+
+            // *** Validación mínima (para evitar NaN en el contador) ***
+            if (isNaN(startDate.getTime())) {
+                dayResultDiv.textContent = 'Error';
+                console.error("La FECHA_INICIO_FIJA no es válida. Use el formato 'AAAA-MM-DD'.");
+                return;
+            }
+
+            // Ajustar la hora de inicio y fin para que la comparación sea solo por día (00:00:00)
+            startDate.setHours(0, 0, 0, 0);
+            today.setHours(0, 0, 0, 0);
+
+            // 1. Calcular la diferencia en milisegundos
+            const timeDifference = Math.abs(today.getTime() - startDate.getTime());
+
+            // 2. Convertir la diferencia de milisegundos a días
+            const ONE_DAY_MS = 1000 * 60 * 60 * 24;
+            const daysDifference = Math.floor(timeDifference / ONE_DAY_MS);
+            
+            // 3. Mostrar solo el número de días
+            dayResultDiv.textContent = daysDifference.toLocaleString('es-ES');
+        }
+
+        // Ejecutar el cálculo automáticamente al cargar la página
+        calculateDays();
+
+    </script>
+</body>
+</html>
